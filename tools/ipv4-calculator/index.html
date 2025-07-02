@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPv4 Subnet Calculator - QCNet Tools</title>
+  <meta name="description" content="Kalkulator subnet IPv4 oleh QCNet, lengkap dengan CIDR, subnet mask, network & broadcast.">
+  <meta name="keywords" content="IP Calculator, Subnet Calculator, IPv4, CIDR, Network Address, QCNet Tools">
+  <meta name="author" content="QCNet Developer Team">
+  <meta name="robots" content="index, follow">
+
+  <link rel="icon" type="image/webp" href="https://qcnetwork.net/logo.webp">
+  <meta property="og:title" content="IPv4 Subnet Calculator - QCNet Tools">
+  <meta property="og:description" content="Kalkulator subnet IPv4 lengkap dan profesional untuk teknisi jaringan.">
+  <meta property="og:image" content="https://qcnetwork.net/logo.webp">
+  <meta property="og:url" content="https://shfylqlby.github.io/tools/ipv4-calculator">
+  <meta property="og:type" content="website">
+
+  <!-- Link to external CSS file -->
+  <link rel="stylesheet" href="./assets/qc.css">
+
+  <!-- External JavaScript libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- html2canvas (required by jsPDF's html method) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</head>
+<body>
+  <button class="toggle-mode fixed-button" id="toggleMode" title="Mode Gelap/Terang">🌙</button>
+  <a href="../../index.html" class="back-button fixed-button" aria-label="Go Back" title="Kembali ke Halaman Utama">
+    <span class="sr-only">Go Back</span>
+  </a>
+
+  <div class="watermark">
+    <img src="https://qcnetwork.net/logo.webp" alt="Logo" style="height: 18px;" />
+    QCNet IP Calculator
+  </div>
+
+  <div class="container">
+    <h1>IPv4 Subnet Calculator</h1>
+    <label for="ip">Masukkan IP Address:</label>
+    <input type="text" id="ip" placeholder="Contoh: 192.168.1.1" />
+
+    <label for="kelas">Pilih Kelas:</label>
+    <select id="kelas">
+      <option value="ALL">ALL</option>
+      <option value="A">Kelas A</option>
+      <option value="B">Kelas B</option>
+      <option value="C">Kelas C</option>
+    </select>
+
+    <label for="cidr">Pilih CIDR:</label>
+    <select id="cidr"></select>
+
+    <div class="button-group">
+        <button id="calculate">Hitung</button>
+        <button class="export-btn" id="exportPdf">Export PDF</button>
+        <button id="copyResultBtn">Salin Hasil</button>
+        <button id="clearBtn">Bersihkan</button>
+    </div>
+
+    <div class="output" id="result"></div>
+    <div class="qr-container" id="qrSection" style="display:none;">
+      <canvas id="qrcode"></canvas>
+      <p>Scan QR untuk membuka hasil ini</p>
+    </div>
+  </div>
+
+  <!-- Link to external JavaScript file -->
+  <script src="./assets/qc.js"></script>
+</body>
+</html>

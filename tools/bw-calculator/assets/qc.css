@@ -1,0 +1,706 @@
+/* assets/qc.css */
+
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --card-gradient-1: linear-gradient(135deg, #74b9ff, #0984e3); /* Blue */
+    --card-gradient-2: linear-gradient(135deg, #00b894, #00a085); /* Green */
+    --card-gradient-3: linear-gradient(135deg, #fd79a8, #e84393); /* Pink */
+    --card-gradient-4: linear-gradient(135deg, #fdcb6e, #e17055); /* Orange */
+    --card-gradient-5: linear-gradient(135deg, #a29bfe, #6c5ce7); /* Purple */
+    --text-primary: #2c3e50;
+    --text-secondary: #7f8c8d;
+    --border-radius: 15px;
+    --shadow-light: 0 10px 25px rgba(0,0,0,0.1);
+    --shadow-heavy: 0 20px 40px rgba(0,0,0,0.1);
+    --status-good: #00b894;
+    --status-warning: #fdcb6e;
+    --status-critical: #e17055;
+
+    /* Dark Mode Variables */
+    --bg-light: rgba(255, 255, 255, 0.95);
+    --bg-dark: #1a1a2e;
+    --text-light: #2c3e50;
+    --text-dark: #e0e0e0;
+    --input-bg-light: #f8f9fa;
+    --input-bg-dark: #2a2a3a;
+    --input-border-light: #ddd;
+    --input-border-dark: #555;
+    --card-bg-light: rgba(255, 255, 255, 0.95);
+    --card-bg-dark: #2a2a3a;
+    --note-bg-light: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    --note-bg-dark: linear-gradient(135deg, #3a3a4a, #4a4a5a);
+    --note-text-light: #856404;
+    --note-text-dark: #f0e68c;
+    --note-border-light: #ffeaa7;
+    --note-border-dark: #6a6a7a;
+
+    /* Chart Colors */
+    --chart-input-color: #74b9ff; /* Light Blue from card-gradient-1 */
+    --chart-output-color: #00b894; /* Green from card-gradient-2 */
+    --chart-text-color-light: #2c3e50;
+    --chart-text-color-dark: #e0e0e0;
+    --chart-grid-color-light: rgba(0, 0, 0, 0.1);
+    --chart-grid-color-dark: rgba(255, 255, 255, 0.1);
+}
+
+/* Base Styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: var(--primary-gradient);
+    min-height: 100vh;
+    color: var(--text-primary);
+    position: relative;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Dark Mode */
+body.dark {
+    background: #121212; /* Dark background for the body */
+    color: var(--text-dark);
+    transition: background 0.5s ease, color 0.5s ease; /* Added transition */
+}
+
+body.dark .container {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1); /* Added border for dark mode container */
+}
+
+body.dark .header h1,
+body.dark .section-title {
+    color: var(--text-dark);
+}
+
+body.dark .input-section {
+    background: var(--input-bg-dark);
+    border-left-color: #e74c3c; /* Keep accent color */
+    border-color: rgba(255,255,255,0.1); /* Added border for dark mode input section */
+}
+
+body.dark .input-group label {
+    color: var(--text-dark);
+}
+
+body.dark .input-group input,
+body.dark .input-group select {
+    background: #333;
+    border-color: var(--input-border-dark);
+    color: var(--text-dark);
+}
+
+body.dark .input-group input:focus,
+body.dark .input-group select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+body.dark .input-group small {
+    color: #bbb;
+}
+
+body.dark .result-card {
+    background: var(--card-bg-dark);
+    box-shadow: var(--shadow-heavy);
+    border-color: rgba(255,255,255,0.1); /* Added border for dark mode result card */
+}
+
+body.dark .result-card .card-title {
+    border-bottom-color: rgba(255,255,255,0.1);
+}
+
+body.dark .metric {
+    border-bottom-color: rgba(255,255,255,0.1);
+}
+
+body.dark .note {
+    background: var(--note-bg-dark);
+    border-color: var(--note-border-dark);
+    color: var(--note-text-dark);
+}
+
+body.dark .note h4 {
+    color: var(--note-text-dark);
+}
+
+body.dark .note strong {
+    color: var(--note-text-dark);
+}
+
+body.dark .footer {
+    background: rgba(0, 0, 0, 0.9);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Back Button */
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px; /* Positioned on the left */
+    background: rgba(0,0,0,0.1);
+    border: 2px solid transparent;
+    cursor: pointer;
+    color: transparent; /* Make text color transparent as we are using background-image for icon */
+    transition: all 0.3s ease;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    outline: none;
+    text-decoration: none; /* Remove underline for anchor tag */
+
+    /* Icon specific styles */
+    background-image: url('https://img.icons8.com/?size=100&id=mN0cPZctq65n&format=png&color=000000'); /* Your icon URL */
+    background-size: 60%; /* Adjust size as needed */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.back-button:hover {
+    background: rgba(0,0,0,0.2);
+    transform: scale(1.1);
+}
+
+body.dark .back-button {
+    /* For dark mode, you might want a different colored icon or invert the current one */
+    /* If the icon is black, it won't be visible on dark background. */
+    /* You can use a white version of the icon, or use CSS filter to invert. */
+    background: rgba(255,255,255,0.1);
+    background-image: url('https://img.icons8.com/?size=100&id=mN0cPZctq65n&format=png&color=FFFFFF'); /* Assuming you have a white version */
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+body.dark .back-button:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Responsive adjustments for back button */
+@media (max-width: 768px) {
+    .back-button {
+        top: 5px;
+        left: 5px;
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Watermark System */
+.watermark {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.watermark::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    width: 500px;
+    height: 500px;
+    background-image: url('https://i.postimg.cc/W4QTyT34/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.03;
+    pointer-events: none;
+}
+
+.watermark-elements {
+    position: fixed;
+    z-index: 1000;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.watermark-corner {
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 12px 18px;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Main Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--bg-light);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--shadow-heavy);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 10;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative; /* For positioning the toggle button */
+}
+
+.header h1 {
+    color: var(--text-primary);
+    margin: 0 0 10px 0;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    transition: color 0.5s ease;
+}
+
+.header img {
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header .subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: normal;
+    margin: 0;
+}
+
+/* Toggle Dark Mode Button */
+.toggle-mode-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.1); /* Added background */
+    border: 2px solid transparent; /* Added border */
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.3s ease; /* Changed transition property */
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    outline: none; /* Added outline none */
+}
+
+.toggle-mode-button:hover {
+    background: rgba(0,0,0,0.2); /* Added hover background */
+    transform: scale(1.1);
+}
+
+body.dark .toggle-mode-button {
+    color: #f1c40f; /* Yellow for dark mode icon */
+    background: rgba(255,255,255,0.1); /* Dark mode background */
+}
+
+body.dark .toggle-mode-button:hover {
+    background: rgba(255,255,255,0.2); /* Dark mode hover background */
+}
+
+.sr-only { /* Added for screen readers */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Input Section */
+.input-section {
+    background: var(--input-bg-light);
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border-left: 5px solid #e74c3c;
+    position: relative;
+    transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+.input-section::before {
+    content: 'QCNet Calculator';
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.section-title {
+    margin: 0 0 20px 0;
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.5s ease;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: color 0.5s ease;
+}
+
+.input-group input, .input-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--input-border-light);
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: white;
+    transition: background 0.5s ease, border-color 0.5s ease, color 0.5s ease;
+}
+
+.input-group input:focus, .input-group select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+    transform: translateY(-2px);
+}
+
+.input-group small {
+    color: #666;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: block;
+    transition: color 0.5s ease;
+}
+
+/* Buttons */
+.btn {
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-primary {
+    background: var(--card-gradient-2);
+    color: white;
+}
+
+.btn-secondary {
+    background: var(--card-gradient-5);
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Results Grid */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+    min-height: 50px;
+}
+
+.result-card {
+    color: white;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.result-card::before {
+    content: 'QCNet';
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.result-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.result-card:hover::after {
+    opacity: 1;
+    top: -10%;
+    right: -10%;
+}
+
+.card-summary { background: var(--card-gradient-3); grid-column: 1 / -1; } /* Summary utama mengambil seluruh lebar */
+.card-input { background: var(--card-gradient-1); }
+.card-output { background: var(--card-gradient-1); }
+.card-utilization { background: var(--card-gradient-4); }
+.card-chart { background: var(--card-gradient-2); } /* Green for chart card */
+.card-table { background: var(--card-gradient-5); } /* Purple for table card */
+
+.card-title {
+    margin: 0 0 20px 0;
+    font-size: 1.4rem;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12px 0;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.metric:last-child {
+    border-bottom: none;
+}
+
+.metric-label {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.metric-value {
+    font-weight: bold;
+    text-align: right;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Status Indicators */
+.status-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.status-good { background-color: var(--status-good); }
+.status-warning { background-color: var(--status-warning); }
+.status-critical { background-color: var(--status-critical); }
+
+/* Professional Notes */
+.note {
+    background: var(--note-bg-light);
+    border: 1px solid var(--note-border-light);
+    color: var(--note-text-light);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    position: relative;
+    transition: background 0.5s ease, border-color 0.5s ease, color 0.5s ease;
+}
+
+.note::after {
+    content: 'QCNet Guidelines';
+    position: absolute;
+    bottom: 8px;
+    right: 15px;
+    font-size: 10px;
+    color: rgba(133, 100, 4, 0.4);
+}
+
+.note h4 {
+    margin: 0 0 15px 0;
+    color: #7d6608;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.5s ease;
+}
+
+.note ul {
+    margin: 15px 0 0 0;
+    padding-left: 20px;
+}
+
+.note li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.note strong {
+    color: #7d6608;
+    transition: color 0.5s ease;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: var(--border-radius);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+.footer-brand {
+    color: var(--status-good);
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.footer-desc {
+    color: #bdc3c7;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-summary {
+        grid-column: 1;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 12px 20px;
+    }
+
+    .toggle-mode-button {
+        top: 5px;
+        right: 5px;
+        font-size: 20px;
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.loading .btn {
+    background: #95a5a6 !important;
+}
+
+/* Smooth Animations */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Error State */
+.error-message {
+    background: #ff6b6b;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+/* Chart Styling */
+.chart-container {
+    position: relative;
+    height: 250px; /* Fixed height for consistency */
+    width: 100%;
+    margin-top: 15px; /* Space below title */
+}
+
+/* Table Styling within card */
+.traffic-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    color: white; /* Text color for table content */
+}
+.traffic-table th, .traffic-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.traffic-table th {
+    font-weight: 600;
+    opacity: 0.8;
+}
+.traffic-table tr:last-child td {
+    border-bottom: none;
+}

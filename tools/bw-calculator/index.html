@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bandwidth Calculator QCNet</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Professional real-time network traffic analysis tool by QCNet.">
+  <meta name="keywords" content="bandwidth calculator, kalkulator bandwidth, network analysis, QCNet, traffic monitoring, network utilization, bandwidth monitoring">
+  <meta name="author" content="QCNet Developer Team">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph for social sharing -->
+  <meta property="og:title" content="Bandwidth Calculator QCNet">
+  <meta property="og:description" content="Professional real-time network traffic analysis tool by QCNet.">
+  <meta property="og:image" content="https://qcnetwork.net/logo.webp">
+  <meta property="og:url" content="https://qcnetwork.net/tools/bw-calculator">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon & Icons -->
+  <link rel="icon" href="https://qcnetwork.net/logo.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://qcnetwork.net/logo.webp">
+  <link rel="shortcut icon" href="https://qcnetwork.net/logo.webp" type="image/webp">
+
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/qc.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Watermark System -->
+  <div class="watermark" aria-hidden="true"></div>
+  <div class="watermark-elements watermark-corner" aria-hidden="true">
+    <img src="https://i.postimg.cc/W4QTyT34/logo.png" alt="QCNet Logo" style="height: 20px; margin-right: 8px;">
+    QCNet Calculator v1.0
+  </div>
+
+  <main class="container">
+    <!-- Header Section -->
+    <header class="header">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
+        <img src="https://i.postimg.cc/W4QTyT34/logo.png" alt="QCNet Logo" style="height: 50px; width: 50px;">
+        <div>
+          <h1>Bandwidth Calculator QCNet</h1>
+          <p class="subtitle">Professional Network Traffic Analysis Tool | Powered by Qalby Cahaya Network</p>
+        </div>
+      </div>
+	  <!-- Back Button -->
+      <a href="#" class="back-button" aria-label="Go Back" onclick="history.back(); return false;">
+        <span class="sr-only">Go Back</span>
+      </a>
+      <!-- Toggle Dark Mode Button -->
+      <button type="button" class="toggle-mode-button" id="darkModeToggle" aria-label="Toggle Dark Mode" aria-pressed="false" data-darkmode="false">
+        <span class="icon">🌙</span>
+        <span class="sr-only">Toggle Dark Mode</span>
+      </button>
+    </header>
+
+    <!-- Input Section -->
+    <section class="input-section" aria-labelledby="input-section-title">
+      <h2 class="section-title" id="input-section-title">
+        <span>📊</span>
+        Real-time Traffic Input
+      </h2>
+
+      <div class="input-group">
+        <label for="inputRateValue">Input Rate:</label>
+        <div style="display: flex; gap: 10px;">
+          <input type="text" id="inputRateValue" placeholder="Enter input rate" aria-describedby="input-desc" style="flex-grow: 1;">
+          <select id="inputRateUnit" style="padding: 12px 15px;">
+            <option value="bps">bps</option>
+            <option value="Kbps">Kbps</option>
+            <option value="Mbps">Mbps</option>
+            <option value="Gbps">Gbps</option>
+          </select>
+        </div>
+        <small id="input-desc">📥 Source: "Last 300 seconds input rate" from network device (Download)</small>
+      </div>
+
+      <div class="input-group">
+        <label for="outputRateValue">Output Rate:</label>
+        <div style="display: flex; gap: 10px;">
+          <input type="text" id="outputRateValue" placeholder="Enter output rate" aria-describedby="output-desc" style="flex-grow: 1;">
+          <select id="outputRateUnit" style="padding: 12px 15px;">
+            <option value="bps">bps</option>
+            <option value="Kbps">Kbps</option>
+            <option value="Mbps">Mbps</option>
+            <option value="Gbps">Gbps</option>
+          </select>
+        </div>
+        <small id="output-desc">📤 Source: "Last 300 seconds output rate" from network device (Upload)</small>
+      </div>
+
+      <div class="input-group">
+        <label for="portCapacity">Port Capacity (Gbps):</label>
+        <input type="text" id="portCapacity" value="10" placeholder="Maximum port capacity (default: 10 Gbps)">
+        <small>⚡ Physical port maximum bandwidth capacity</small>
+      </div>
+
+      <button class="btn btn-primary" id="analyzeButton" aria-label="Analyze Real-time Traffic">
+        <span>🔄</span> Analyze Real-time Traffic
+      </button>
+
+      <button class="btn btn-secondary" id="exportButton" aria-label="Export Analysis Report to CSV">
+        <span>📄</span> Export Analysis Report
+      </button>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="results-grid" aria-live="polite">
+      <!-- Results will be dynamically rendered -->
+    </section>
+
+    <!-- Professional Guidelines -->
+    <aside class="note" aria-labelledby="guidelines-title">
+      <h4 id="guidelines-title"><span>📋</span> Panduan Cepat Analisis Jaringan</h4>
+      <ul>
+        <li><strong>Pantau Real-time:</strong> Cek penggunaan internet saat ini untuk akurasi.</li>
+        <li><strong>Pahami Batas Aman:</strong>
+          <ul>
+            <li>&gt;80%: Bahaya! Butuh penambahan kapasitas segera.</li>
+            <li>60–80%: Waspada! Pantau ketat, mungkin melambat.</li>
+            <li>&lt;60%: Aman! Jaringan lancar.</li>
+          </ul>
+        </li>
+        <li><strong>Rencanakan Kapasitas:</strong> Gunakan data puncak untuk antisipasi kebutuhan internet masa depan.</li>
+        <li><strong>Kenali Arah Lalu Lintas:</strong> Lebih banyak download, upload, atau seimbang?</li>
+        <li><strong>Tentukan Kondisi Normal:</strong> Pantau saat sibuk untuk tahu performa sebenarnya.</li>
+        <li><strong>Simpan Laporan:</strong> Ekspor hasil sebagai dokumentasi tren penggunaan.</li>
+        <li><strong>Sisa Kapasitas:</strong> Pastikan masih ada “ruang kosong”.</li>
+      </ul>
+    </aside>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-brand">QCNet Bandwidth Calculator</div>
+      <div>Network Analysis Tool | © 2025 QCNet Solutions</div>
+      <div class="footer-desc">Professional Network Monitoring & Traffic Analysis</div>
+    </footer>
+  </main>
+
+  <script src="./assets/qc.js" defer></script>
+</body>
+</html>

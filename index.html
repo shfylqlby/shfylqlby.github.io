@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QCNet Tools - Kalkulator IPv4, IPv6, Bandwidth & DNS Checker</title>
+  <meta name="description" content="Kumpulan alat jaringan online seperti kalkulator subnet IPv4/IPv6, bandwidth calculator, dan DNS checker. Cocok untuk teknisi jaringan dan profesional IT.">
+  <meta name="keywords" content="IP Calculator, Subnet Calculator, IPv4, IPv6, Bandwidth, DNS Checker, Kalkulator Jaringan, QCNet Tools">
+  <meta name="author" content="QCNet Developer Team">
+  <meta name="robots" content="index, follow">
+
+  <!-- OG Tags -->
+  <meta property="og:title" content="QCNet Tools - Kalkulator IPv4, IPv6, Bandwidth & DNS Checker">
+  <meta property="og:description" content="Alat bantu jaringan lengkap untuk teknisi. Kalkulator IPv4, IPv6, bandwidth dan DNS checker.">
+  <meta property="og:image" content="https://qcnetwork.net/logo.webp">
+  <meta property="og:url" content="https://shfylqlby.github.io/tools/">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://qcnetwork.net/logo.webp" type="image/webp">
+
+  <!-- Preconnect for speed -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #00b5e2, #008b8b);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 40px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    header img {
+      width: 100px;
+      height: auto;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin-top: 20px;
+      letter-spacing: 1px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .tools-container {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 40px 20px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tool-card {
+      background-color: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      padding: 30px 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .tool-card h2 {
+      font-size: 1.6em;
+      color: #1e3a8a;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .tool-card p {
+      color: #666;
+      font-size: 1.05em;
+      margin-bottom: 20px;
+    }
+
+    .tool-card a {
+      padding: 12px 20px;
+      background-color: #1e3a8a;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 1.1em;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .tool-card a:hover {
+      background-color: #00b5e2;
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8em;
+      }
+
+      .tool-card h2 {
+        font-size: 1.4em;
+      }
+
+      .tool-card p {
+        font-size: 1em;
+      }
+
+      .tool-card a {
+        font-size: 1em;
+        padding: 10px 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="https://qcnetwork.net/logo.webp" alt="Logo QCNet" />
+    <h1>QCNet Tools</h1>
+  </header>
+
+  <main class="tools-container">
+    <section class="tool-card">
+      <h2>IPv4 Kalkulator</h2>
+      <p>Hitung subnet dan alokasi IP untuk IPv4. Mempermudah Anda dalam merencanakan jaringan IPv4.</p>
+      <a href="./tools/ipv4-calculator" title="Buka IPv4 Kalkulator">Mulai Kalkulasi</a>
+    </section>
+
+    <section class="tool-card">
+      <h2>IPv6 Kalkulator</h2>
+      <p>Hitung subnet dan alokasi IP untuk IPv6. Solusi untuk perencanaan jaringan IPv6 yang lebih besar.</p>
+      <a href="./tools/ipv6-calculator" title="Buka IPv6 Kalkulator">Mulai Kalkulasi</a>
+    </section>
+
+    <section class="tool-card">
+      <h2>Bandwidth Kalkulator</h2>
+      <p>Hitung kebutuhan bandwidth berdasarkan jumlah pengguna dan kebutuhan data.</p>
+      <a href="./tools/bw-calculator" title="Buka Bandwidth Kalkulator">Mulai Kalkulasi</a>
+    </section>
+
+    <section class="tool-card">
+      <h2>DNS Checker</h2>
+      <p>Periksa status DNS domain Anda secara real-time dan pastikan konfigurasi DNS sudah benar.</p>
+      <a href="./tools/dns-checker" title="Periksa DNS Sekarang">Periksa DNS</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 QC Network. All rights reserved.</p>
+  </footer>
+</body>
+</html>
