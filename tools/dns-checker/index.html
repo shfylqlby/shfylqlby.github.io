@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QCNET DNS Check</title>
+  <link rel="stylesheet" href="./assets/qc.css" />
+</head>
+<body>
+  <header>
+    <img src="https://qcnetwork.net/logo.webp" alt="QCNET Logo" class="logo" />
+    <h1>QCNET DNS Check</h1>
+    <a href="../../index.html" class="back-button fixed-button" aria-label="Go Back" title="Kembali ke Halaman Utama">
+      <span class="sr-only">Go Back</span>
+    </a>
+  </header>
+
+  <main>
+    <section id="ip-info" class="card">
+      <h2>IP Info</h2>
+      <pre id="ip-result">Loading...</pre>
+    </section>
+
+    <section id="ecs-info" class="card">
+      <h2>EDNS Client Subnet (ECS)</h2>
+      <pre id="ecs-result">Loading...</pre>
+    </section>
+
+    <section id="dnssec-info" class="card">
+      <h2>DNSSEC Validation</h2>
+      <pre id="dnssec-result">Loading...</pre>
+    </section>
+
+    <section id="resolver-info" class="card">
+      <h2>DNS Resolver Test</h2>
+      <pre id="resolver-result">Loading...</pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>Powered by QCNET | Built with ❤️ for diagnostic purpose only</p>
+  </footer>
+
+  <script src="./assets/qc.js"></script>
+</body>
+</html>
