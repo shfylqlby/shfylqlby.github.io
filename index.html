@@ -27,8 +27,8 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #808080; /* Mengubah background menjadi abu-abu */
-      color: #eee;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: #333;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -38,18 +38,16 @@
     }
 
     #particles-js {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      z-index: 0;
-      pointer-events: none;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
 
     header {
       text-align: center;
       padding: 2rem 1rem;
-      color: #ddd;
-      position: relative;
-      z-index: 10;
+      color: white;
     }
 
     header img {
@@ -71,45 +69,48 @@
       padding: 2rem 1.5rem 6rem;
       max-width: 1200px;
       margin: 0 auto;
-      overflow-x: hidden;
-      position: relative;
-      z-index: 10;
+      overflow-x: hidden; /* Mencegah tampilan menyamping */
     }
 
     @media (min-width: 600px) {
       main {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* 2 card di atas dan 2 di bawah untuk mobile */
       }
     }
 
     @media (min-width: 900px) {
       main {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, 1fr); /* 4 card sejajar untuk desktop */
       }
     }
 
     .tool-card {
       background-color: rgba(255, 255, 255, 0.15);
-      color: white;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(255,255,255,0.2);
+      color: black; /* Mengubah warna teks card menjadi hitam */
       border-radius: 15px;
       padding: 1.8rem 1.5rem;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
       text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       min-width: 0;
       word-wrap: break-word;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      opacity: 0; /* Mulai dengan tidak terlihat */
+      transform: translateY(20px); /* Mulai dari bawah */
+      transition: opacity 0.5s ease, transform 0.5s ease; /* Transisi halus */
     }
 
     .tool-card.visible {
-      opacity: 1;
-      transform: translateY(0);
+      opacity: 1; /* Menjadi terlihat */
+      transform: translateY(0); /* Kembali ke posisi normal */
+    }
+
+    .tool-card:hover {
+      transform: scale(1.05); /* Membesar sedikit */
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Bayangan lebih dalam */
+      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi halus */
     }
 
     .tool-card h2 {
@@ -121,7 +122,7 @@
     .tool-card p {
       flex: 1;
       font-size: 1rem;
-      color: #ddd;
+      color: black; /* Mengubah warna teks paragraf menjadi hitam */
       margin-bottom: 1.2rem;
     }
 
@@ -136,6 +137,11 @@
       transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
+    .tool-card a:hover {
+      background-color: var(--button-hover);
+      transform: scale(1.05);
+    }
+
     footer {
       background-color: #1e1e1e;
       color: #ccc;
@@ -143,7 +149,7 @@
       padding: 1rem;
       font-size: 0.9rem;
       position: relative;
-      z-index: 10;
+      z-index: 1;
     }
 
     /* Loading Spinner */
@@ -161,8 +167,8 @@
     }
 
     .spinner {
-      border: 8px solid #f3f3f3;
-      border-top: 8px solid #3498db;
+      border: 8px solid #f3f3f3; /* Light grey */
+      border-top: 8px solid #3498db; /* Blue */
       border-radius: 50%;
       width: 50px;
       height: 50px;
@@ -177,29 +183,30 @@
     /* Floating Action Button Group */
     .fab-container {
       position: fixed;
-      top: 20px;
+      top: 20px; /* Pindahkan ke atas */
       right: 20px;
-      z-index: 20;
+      z-index: 1000;
       display: flex;
-      flex-direction: column;
-      gap: 10px;
+      flex-direction: column; /* Mengatur tombol secara vertikal */
+      gap: 10px; /* Jarak antar tombol */
     }
 
     .fab-toggle {
-      width: 40px;
-      height: 40px;
+      width: 40px; /* Ukuran lebih kecil */
+      height: 40px; /* Ukuran lebih kecil */
       background-color: #fff;
       border-radius: 50%;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .fab-toggle img {
-      width: 20px;
-      height: 20px;
+      width: 20px; /* Ukuran lebih kecil */
+      height: 20px; /* Ukuran lebih kecil */
     }
 
     .fab-options {
@@ -221,8 +228,8 @@
     }
 
     .fab-options a {
-      width: 40px;
-      height: 40px;
+      width: 40px; /* Ukuran lebih kecil */
+      height: 40px; /* Ukuran lebih kecil */
       background-color: #fff;
       border-radius: 50%;
       display: flex;
@@ -246,8 +253,8 @@
     }
 
     .fab-options a img {
-      width: 20px;
-      height: 20px;
+      width: 20px; /* Ukuran lebih kecil */
+      height: 20px; /* Ukuran lebih kecil */
     }
 
     /* Rocket Cursor */
@@ -258,6 +265,12 @@
       pointer-events: none;
       transform-origin: center center;
       z-index: 10000;
+    }
+
+    @media (max-width: 768px) {
+      #rocket {
+        display: none; /* Sembunyikan kursor di perangkat seluler */
+      }
     }
 
     @media (max-width: 480px) {
@@ -278,13 +291,13 @@
       }
 
       .fab-toggle {
-        width: 36px;
-        height: 36px;
+        width: 36px; /* Ukuran lebih kecil */
+        height: 36px; /* Ukuran lebih kecil */
       }
 
       .fab-toggle img {
-        width: 18px;
-        height: 18px;
+        width: 18px; /* Ukuran lebih kecil */
+        height: 18px; /* Ukuran lebih kecil */
       }
     }
   </style>
@@ -298,7 +311,7 @@
   <header>
     <img src="https://qcnetwork.net/logo.webp" alt="QCNet Logo" />
     <h1>QCNet Tools</h1>
-    <h6>developed by Shofiyul Qalby</h6>
+    <h5>developed by Shofiyul Qalby</h5>
   </header>
 
   <main>
@@ -331,6 +344,9 @@
     <p>&copy; 2025 QC Network. All rights reserved.</p>
   </footer>
 
+  <!-- Rocket Cursor -->
+  <img id="rocket" src="https://img.icons8.com/?size=100&id=11603&format=png&color=000000" alt="Rocket"/>
+
   <!-- Floating Action Button -->
   <div class="fab-container">
     <div class="fab-toggle" id="fabToggle" aria-label="Menu profil" role="button" tabindex="0">
@@ -348,9 +364,6 @@
       </a>
     </div>
   </div>
-
-  <!-- Rocket Cursor -->
-  <img id="rocket" src="https://img.icons8.com/?size=100&id=11603&format=png&color=000000" alt="Rocket"/>
 
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
@@ -458,7 +471,6 @@
     let rocketY = mouseY;
     let angle = 0;
 
-    // Meningkatkan smoothing posisi dan rotasi
     const posSmoothing = 0.1; // Meningkatkan smoothing posisi
     const rotSmoothing = 0.15; // Meningkatkan smoothing rotasi
 
