@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>QCNet Tools - Kalkulator IPv4, IPv6, Bandwidth & DNS Checker</title>
-  <meta name="description" content="Alat bantu jaringan: IPv4/IPv6 calculator, bandwidth calculator, dan DNS checker. Cocok untuk teknisi dan profesional IT." />
-  <meta name="author" content="QCNet Developer Team" />
+  <title>QCNet Tools by Shofiyul Qalby</title>
+  <meta name="description" content="Qalby Cahaya Network Tools Develop by Muchamad Shofiyul Qalby" />
+  <meta name="author" content="Muchamad Shofiyul Qalby" />
   <meta name="robots" content="index, follow" />
   <link rel="icon" href="https://qcnetwork.net/logo.webp" type="image/webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,7 +34,7 @@
       flex-direction: column;
       position: relative;
       overflow-x: hidden;
-      cursor: none; /* Menghilangkan kursor default */
+      cursor: none;
     }
 
     #particles-js {
@@ -69,24 +69,24 @@
       padding: 2rem 1.5rem 6rem;
       max-width: 1200px;
       margin: 0 auto;
-      overflow-x: hidden; /* Mencegah tampilan menyamping */
+      overflow-x: hidden;
     }
 
     @media (min-width: 600px) {
       main {
-        grid-template-columns: repeat(2, 1fr); /* 2 card di atas dan 2 di bawah untuk mobile */
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
     @media (min-width: 900px) {
       main {
-        grid-template-columns: repeat(4, 1fr); /* 4 card sejajar untuk desktop */
+        grid-template-columns: repeat(4, 1fr);
       }
     }
 
     .tool-card {
       background-color: rgba(255, 255, 255, 0.15);
-      color: black; /* Mengubah warna teks card menjadi hitam */
+      color: black;
       border-radius: 15px;
       padding: 1.8rem 1.5rem;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -97,20 +97,20 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       min-width: 0;
       word-wrap: break-word;
-      opacity: 0; /* Mulai dengan tidak terlihat */
-      transform: translateY(20px); /* Mulai dari bawah */
-      transition: opacity 0.5s ease, transform 0.5s ease; /* Transisi halus */
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
     .tool-card.visible {
-      opacity: 1; /* Menjadi terlihat */
-      transform: translateY(0); /* Kembali ke posisi normal */
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .tool-card:hover {
-      transform: scale(1.05); /* Membesar sedikit */
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Bayangan lebih dalam */
-      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi halus */
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .tool-card h2 {
@@ -122,7 +122,7 @@
     .tool-card p {
       flex: 1;
       font-size: 1rem;
-      color: white; /* Mengubah warna teks paragraf menjadi hitam */
+      color: white;
       margin-bottom: 1.2rem;
     }
 
@@ -183,17 +183,17 @@
     /* Floating Action Button Group */
     .fab-container {
       position: fixed;
-      top: 20px; /* Pindahkan ke atas */
+      top: 20px;
       right: 20px;
       z-index: 1000;
       display: flex;
-      flex-direction: column; /* Mengatur tombol secara vertikal */
-      gap: 10px; /* Jarak antar tombol */
+      flex-direction: column;
+      gap: 10px;
     }
 
     .fab-toggle {
-      width: 40px; /* Ukuran lebih kecil */
-      height: 40px; /* Ukuran lebih kecil */
+      width: 40px;
+      height: 40px;
       background-color: #fff;
       border-radius: 50%;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
@@ -205,8 +205,8 @@
     }
 
     .fab-toggle img {
-      width: 20px; /* Ukuran lebih kecil */
-      height: 20px; /* Ukuran lebih kecil */
+      width: 20px;
+      height: 20px;
     }
 
     .fab-options {
@@ -228,8 +228,8 @@
     }
 
     .fab-options a {
-      width: 40px; /* Ukuran lebih kecil */
-      height: 40px; /* Ukuran lebih kecil */
+      width: 40px;
+      height: 40px;
       background-color: #fff;
       border-radius: 50%;
       display: flex;
@@ -253,8 +253,8 @@
     }
 
     .fab-options a img {
-      width: 20px; /* Ukuran lebih kecil */
-      height: 20px; /* Ukuran lebih kecil */
+      width: 20px; 
+      height: 20px; 
     }
 
     /* Rocket Cursor */
@@ -269,7 +269,7 @@
 
     @media (max-width: 768px) {
       #rocket {
-        display: none; /* Sembunyikan kursor di perangkat seluler */
+        display: none;
       }
     }
 
@@ -291,13 +291,13 @@
       }
 
       .fab-toggle {
-        width: 36px; /* Ukuran lebih kecil */
-        height: 36px; /* Ukuran lebih kecil */
+        width: 36px; 
+        height: 36px;
       }
 
       .fab-toggle img {
-        width: 18px; /* Ukuran lebih kecil */
-        height: 18px; /* Ukuran lebih kecil */
+        width: 18px; 
+        height: 18px;
       }
     }
   </style>
@@ -311,7 +311,7 @@
   <header>
     <img src="https://qcnetwork.net/logo.webp" alt="QCNet Logo" />
     <h1>QCNet Tools</h1>
-    <h5>developed by Shofiyul Qalby</h5>
+    <h5>developed by Muchamad Shofiyul Qalby</h5>
   </header>
 
   <main>
@@ -471,8 +471,8 @@
     let rocketY = mouseY;
     let angle = 0;
 
-    const posSmoothing = 0.1; // Meningkatkan smoothing posisi
-    const rotSmoothing = 0.15; // Meningkatkan smoothing rotasi
+    const posSmoothing = 0.1; 
+    const rotSmoothing = 0.15;
 
     window.addEventListener("mousemove", (e) => {
       mouseX = e.clientX;
