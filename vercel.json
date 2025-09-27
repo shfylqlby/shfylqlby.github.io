@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/tools/dns-checker",
+      "destination": "/tools/dns-checker/index.html"
+    },
+    {
+      "source": "/tools/ipv4-calculator",
+      "destination": "/tools/ipv4/index.html"
+    },
+    {
+      "source": "/tools/bw-calculator",
+      "destination": "/tools/bw-calculator/index.html"
+    }
+  ]
+}
