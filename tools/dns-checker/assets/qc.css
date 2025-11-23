@@ -1,131 +1,119 @@
-  body {
-    font-family: system-ui, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #111827;
-    color: #f3f4f6;
-  }
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #111827;
+  color: #f3f4f6;
+}
 
-  header {
-    background: #1f2937;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 2rem;
-    border-bottom: 2px solid #374151;
-    position: relative; /* Untuk tombol posisi absolut */
-  }
+header {
+  background: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  border-bottom: 2px solid #374151;
+  position: relative;
+}
 
-  .logo {
-    width: 50px;
-    height: 50px;
-    border-radius: 8px;
-  }
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+}
 
-  h1 {
-    font-size: 1.5rem;
-    margin: 0;
-  }
+h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
 
-  main {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 2rem;
-  }
+.header-button {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
 
-  .card {
-    background: #1e293b;
-    border-radius: 1rem;
-    padding: 1rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  }
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
 
-  h2 {
-    margin-top: 0;
-    color: #93c5fd;
-  }
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 
-  pre {
-    white-space: pre-wrap;
-    word-break: break-word;
-    font-family: monospace;
-    font-size: 0.95rem;
-    background: #0f172a;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    color: #d1d5db;
-  }
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 
-  footer {
-    text-align: center;
-    padding: 1rem;
-    color: #6b7280;
-    font-size: 0.9rem;
-    border-top: 1px solid #374151;
-  }
+  background-image: url('https://img.icons8.com/?size=100&id=mN0cPZctq65n&format=png&color=ffffff');
+  background-size: 55%;
+  background-repeat: no-repeat;
+  background-position: center;
 
-  .fixed-button {
-    position: fixed;
-    top: 20px;
-    background: rgba(0, 0, 0, 0.1);
-    border: none;
-    cursor: pointer;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.header-button:hover {
+  transform: translateY(-50%) scale(1.1);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.55);
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.card {
+  background: #1e293b;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+h2 {
+  margin-top: 0;
+  color: #93c5fd;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: monospace;
+  font-size: 0.95rem;
+  background: #0f172a;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: #d1d5db;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  color: #6b7280;
+  font-size: 0.9rem;
+  border-top: 1px solid #374151;
+}
+
+@media (max-width: 768px) {
+  .header-button {
+    right: 12px;
     width: 40px;
     height: 40px;
-    box-sizing: border-box;
-    transition: background 0.3s ease, transform 0.3s ease;
-    z-index: 1001;
+    background-size: 50%;
   }
+}
 
-  .fixed-button:hover {
-    background: rgba(0, 0, 0, 0.2);
-    transform: scale(1.1);
-  }
-
-  .back-button {
-    right: 20px;
-    padding: 0;
-    text-decoration: none;
-    color: transparent;
-    background-image: url('https://img.icons8.com/?size=100&id=mN0cPZctq65n&format=png&color=ffffff');
-    background-size: 60%;
-    background-repeat: no-repeat;
-    background-position: center;
-    position: fixed; /* Supaya tombol selalu di posisi yang sama */
-  }
-
-  /* Tambahan animasi hover lebih menarik */
-  .back-button:hover {
-    transform: scale(1.1) rotate(-5deg);
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-
-  @media (max-width: 768px) {
-    .fixed-button {
-      top: 10px;
-      width: 35px;
-      height: 35px;
-    }
-
-    .back-button {
-      right: 10px; /* Perbaikan dari 'tight' ke 'right' */
-      background-size: 55%;
-    }
-  }
-
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
