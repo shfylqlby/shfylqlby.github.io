@@ -3,9 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>QCNet Tools by Shofiyul Qalby</title>
-  <meta name="description" content="Qalby Cahaya Network Tools Develop by Muchamad Shofiyul Qalby" />
-  <meta name="author" content="Muchamad Shofiyul Qalby" />
+
+<title>QCNet Tools — PT Qalby Cahaya Network</title>
+<meta name="description" content="QCNet Tools adalah kumpulan alat jaringan milik PT Qalby Cahaya Network yang dikembangkan oleh Muchamad Shofiyul Qalby. Menyediakan IPv4 & IPv6 kalkulator, DNS Checker, Bandwidth Calculator untuk Network Tools Indonesia.">
+<meta name="keywords" content="QCNet, PT Qalby Cahaya Network, Muchamad Shofiyul Qalby, QCNet Tools, Network Tools Indonesia, IPv4 Calculator, IPv6 Calculator, DNS Checker, BW Calculator">
+<meta name="author" content="Muchamad Shofiyul Qalby">
+<meta property="og:title" content="QCNet Tools — PT Qalby Cahaya Network">
+<meta property="og:description" content="Kumpulan network tools QCNet untuk perhitungan subnet, DNS lookup, IPv4/IPv6 kalkulator, dan bandwidth estimator.">
+<meta property="og:image" content="https://tools.shofiyulqalby.dev/logo.webp">
+<meta property="og:url" content="https://tools.shofiyulqalby.dev/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "PT Qalby Cahaya Network",
+  "alternateName": "QCNet",
+  "url": "https://tools.shofiyulqalby.dev",
+  "logo": "https://tools.shofiyulqalby.dev/logo.webp",
+  "founder": {
+    "@type": "Person",
+    "name": "Muchamad Shofiyul Qalby"
+  },
+  "sameAs": [
+    "https://instagram.com/shfylqlby",
+    "https://www.linkedin.com/in/shfylqlby/",
+    "https://github.com/shfylqlby"
+  ]
+}
+</script>
+
+
+
   <meta name="robots" content="index, follow" />
   <link rel="icon" href="https://qcnetwork.net/logo.webp" type="image/webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -152,7 +183,6 @@
       z-index: 1;
     }
 
-    /* Loading Spinner */
     .loading-spinner {
       position: fixed;
       top: 0;
@@ -167,8 +197,8 @@
     }
 
     .spinner {
-      border: 8px solid #f3f3f3; /* Light grey */
-      border-top: 8px solid #3498db; /* Blue */
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db;
       border-radius: 50%;
       width: 50px;
       height: 50px;
@@ -180,7 +210,6 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* Floating Action Button Group */
     .fab-container {
       position: fixed;
       top: 20px;
@@ -257,7 +286,6 @@
       height: 20px; 
     }
 
-    /* Rocket Cursor */
     #rocket {
       position: fixed;
       width: 40px;
@@ -310,8 +338,8 @@
 
   <header>
     <img src="https://qcnetwork.net/logo.webp" alt="QCNet Logo" />
-    <h1>QCNet Tools</h1>
-    <h5>developed by Muchamad Shofiyul Qalby</h5>
+    <h1>QCNet Tools — PT Qalby Cahaya Network</h1>
+    <h3>developed by Muchamad Shofiyul Qalby</h3>
   </header>
 
   <main>
@@ -344,10 +372,8 @@
     <p>&copy; 2025 <a href='https://qcnetwork.net'>QCNET</a>. All rights reserved.</p>
   </footer>
 
-  <!-- Rocket Cursor -->
   <img id="rocket" src="https://img.icons8.com/?size=100&id=11603&format=png&color=000000" alt="Rocket"/>
 
-  <!-- Floating Action Button -->
   <div class="fab-container">
     <div class="fab-toggle" id="fabToggle" aria-label="Menu profil" role="button" tabindex="0">
       <img src="https://img.icons8.com/?size=100&id=ckaioC1qqwCu&format=png&color=000000" alt="Profil" />
@@ -367,18 +393,17 @@
 
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
-    // Tampilkan loading spinner sampai semua content dan particles selesai
+
     window.addEventListener('load', () => {
       document.querySelector('.loading-spinner').style.display = 'none';
 
-      // Animate tool cards fade-in staggered
       const cards = document.querySelectorAll('.tool-card');
       cards.forEach((card, i) => {
         setTimeout(() => card.classList.add('visible'), i * 150);
       });
     });
 
-    // Floating Action Button toggle
+
     const fabToggle = document.getElementById('fabToggle');
     const fabOptions = document.getElementById('fabOptions');
     fabToggle.addEventListener('click', () => {
@@ -391,7 +416,6 @@
       }
     });
 
-    // Particles.js config for starry space background
     particlesJS('particles-js', {
       "particles": {
         "number": {
@@ -462,7 +486,6 @@
       "retina_detect": true
     });
 
-    // Rocket Cursor Animation
     const rocket = document.getElementById("rocket");
 
     let mouseX = window.innerWidth / 2;
@@ -487,7 +510,6 @@
     }
 
     function animate() {
-      // Smooth position
       rocketX += (mouseX - rocketX) * posSmoothing;
       rocketY += (mouseY - rocketY) * posSmoothing;
 
@@ -496,10 +518,8 @@
 
       const targetAngle = Math.atan2(dy, dx);
 
-      // Smooth angle with full 360 continuity
       angle = angleLerp(angle, targetAngle, rotSmoothing);
 
-      // Tambahkan rotasi 90° karena roket menghadap ke atas secara default
       rocket.style.transform = `translate(${rocketX - 20}px, ${rocketY - 20}px) rotate(${angle + Math.PI / 2}rad)`;
 
       requestAnimationFrame(animate);

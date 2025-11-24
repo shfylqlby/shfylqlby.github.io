@@ -1,12 +1,10 @@
-/* assets/qc.css */
-
 :root {
     --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --card-gradient-1: linear-gradient(135deg, #74b9ff, #0984e3); /* Blue */
-    --card-gradient-2: linear-gradient(135deg, #00b894, #00a085); /* Green */
-    --card-gradient-3: linear-gradient(135deg, #fd79a8, #e84393); /* Pink */
-    --card-gradient-4: linear-gradient(135deg, #fdcb6e, #e17055); /* Orange */
-    --card-gradient-5: linear-gradient(135deg, #a29bfe, #6c5ce7); /* Purple */
+    --card-gradient-1: linear-gradient(135deg, #74b9ff, #0984e3);
+    --card-gradient-2: linear-gradient(135deg, #00b894, #00a085);
+    --card-gradient-3: linear-gradient(135deg, #fd79a8, #e84393);
+    --card-gradient-4: linear-gradient(135deg, #fdcb6e, #e17055);
+    --card-gradient-5: linear-gradient(135deg, #a29bfe, #6c5ce7);
     --text-primary: #2c3e50;
     --text-secondary: #7f8c8d;
     --border-radius: 15px;
@@ -16,7 +14,6 @@
     --status-warning: #fdcb6e;
     --status-critical: #e17055;
 
-    /* Dark Mode Variables */
     --bg-light: rgba(255, 255, 255, 0.95);
     --bg-dark: #1a1a2e;
     --text-light: #2c3e50;
@@ -34,16 +31,14 @@
     --note-border-light: #ffeaa7;
     --note-border-dark: #6a6a7a;
 
-    /* Chart Colors */
-    --chart-input-color: #74b9ff; /* Light Blue from card-gradient-1 */
-    --chart-output-color: #00b894; /* Green from card-gradient-2 */
+    --chart-input-color: #74b9ff;
+    --chart-output-color: #00b894;
     --chart-text-color-light: #2c3e50;
     --chart-text-color-dark: #e0e0e0;
     --chart-grid-color-light: rgba(0, 0, 0, 0.1);
     --chart-grid-color-dark: rgba(255, 255, 255, 0.1);
 }
 
-/* Base Styles */
 * {
     box-sizing: border-box;
 }
@@ -59,18 +54,17 @@ body {
     transition: background 0.5s ease, color 0.5s ease;
 }
 
-/* Dark Mode */
 body.dark {
-    background: #121212; /* Dark background for the body */
+    background: #121212;
     color: var(--text-dark);
-    transition: background 0.5s ease, color 0.5s ease; /* Added transition */
+    transition: background 0.5s ease, color 0.5s ease;
 }
 
 body.dark .container {
     background: var(--bg-dark);
     color: var(--text-dark);
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    border: 1px solid rgba(255,255,255,0.1); /* Added border for dark mode container */
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 body.dark .header h1,
@@ -80,8 +74,8 @@ body.dark .section-title {
 
 body.dark .input-section {
     background: var(--input-bg-dark);
-    border-left-color: #e74c3c; /* Keep accent color */
-    border-color: rgba(255,255,255,0.1); /* Added border for dark mode input section */
+    border-left-color: #e74c3c;
+    border-color: rgba(255,255,255,0.1);
 }
 
 body.dark .input-group label {
@@ -108,7 +102,7 @@ body.dark .input-group small {
 body.dark .result-card {
     background: var(--card-bg-dark);
     box-shadow: var(--shadow-heavy);
-    border-color: rgba(255,255,255,0.1); /* Added border for dark mode result card */
+    border-color: rgba(255,255,255,0.1);
 }
 
 body.dark .result-card .card-title {
@@ -138,15 +132,14 @@ body.dark .footer {
     border-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Back Button */
 .back-button {
     position: absolute;
     top: 10px;
-    left: 10px; /* Positioned on the left */
+    left: 10px;
     background: rgba(0,0,0,0.1);
     border: 2px solid transparent;
     cursor: pointer;
-    color: transparent; /* Make text color transparent as we are using background-image for icon */
+    color: transparent;
     transition: all 0.3s ease;
     padding: 5px;
     border-radius: 50%;
@@ -156,11 +149,11 @@ body.dark .footer {
     width: 40px;
     height: 40px;
     outline: none;
-    text-decoration: none; /* Remove underline for anchor tag */
+    text-decoration: none;
 
-    /* Icon specific styles */
-    background-image: url('https://img.icons8.com/?size=100&id=mN0cPZctq65n&format=png&color=000000'); /* Your icon URL */
-    background-size: 60%; /* Adjust size as needed */
+
+    background-image: url('https://img.icons8.com/?size=100&id=mN0cPZctq65n&format=png&color=000000');
+    background-size: 60%;
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -171,11 +164,8 @@ body.dark .footer {
 }
 
 body.dark .back-button {
-    /* For dark mode, you might want a different colored icon or invert the current one */
-    /* If the icon is black, it won't be visible on dark background. */
-    /* You can use a white version of the icon, or use CSS filter to invert. */
     background: rgba(255,255,255,0.1);
-    background-image: url('https://img.icons8.com/?size=100&id=mN0cPZctq65n&format=png&color=FFFFFF'); /* Assuming you have a white version */
+    background-image: url('https://img.icons8.com/?size=100&id=mN0cPZctq65n&format=png&color=FFFFFF');
     background-size: 60%;
     background-repeat: no-repeat;
     background-position: center;
@@ -185,7 +175,6 @@ body.dark .back-button:hover {
     background: rgba(255,255,255,0.2);
 }
 
-/* Responsive adjustments for back button */
 @media (max-width: 768px) {
     .back-button {
         top: 5px;
@@ -195,7 +184,6 @@ body.dark .back-button:hover {
     }
 }
 
-/* Watermark System */
 .watermark {
     position: fixed;
     top: 0;
@@ -243,7 +231,6 @@ body.dark .back-button:hover {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Main Container */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -257,11 +244,10 @@ body.dark .back-button:hover {
     transition: background 0.5s ease, color 0.5s ease;
 }
 
-/* Header */
 .header {
     text-align: center;
     margin-bottom: 40px;
-    position: relative; /* For positioning the toggle button */
+    position: relative;
 }
 
 .header h1 {
@@ -284,17 +270,16 @@ body.dark .back-button:hover {
     margin: 0;
 }
 
-/* Toggle Dark Mode Button */
 .toggle-mode-button {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: rgba(0,0,0,0.1); /* Added background */
-    border: 2px solid transparent; /* Added border */
+    background: rgba(0,0,0,0.1);
+    border: 2px solid transparent;
     font-size: 24px;
     cursor: pointer;
     color: var(--text-secondary);
-    transition: all 0.3s ease; /* Changed transition property */
+    transition: all 0.3s ease;
     padding: 5px;
     border-radius: 50%;
     display: flex;
@@ -302,24 +287,24 @@ body.dark .back-button:hover {
     justify-content: center;
     width: 40px;
     height: 40px;
-    outline: none; /* Added outline none */
+    outline: none;
 }
 
 .toggle-mode-button:hover {
-    background: rgba(0,0,0,0.2); /* Added hover background */
+    background: rgba(0,0,0,0.2);
     transform: scale(1.1);
 }
 
 body.dark .toggle-mode-button {
-    color: #f1c40f; /* Yellow for dark mode icon */
-    background: rgba(255,255,255,0.1); /* Dark mode background */
+    color: #f1c40f; 
+    background: rgba(255,255,255,0.1); 
 }
 
 body.dark .toggle-mode-button:hover {
-    background: rgba(255,255,255,0.2); /* Dark mode hover background */
+    background: rgba(255,255,255,0.2); 
 }
 
-.sr-only { /* Added for screen readers */
+.sr-only { 
     position: absolute;
     width: 1px;
     height: 1px;
@@ -331,7 +316,7 @@ body.dark .toggle-mode-button:hover {
     border-width: 0;
 }
 
-/* Input Section */
+
 .input-section {
     background: var(--input-bg-light);
     padding: 25px;
@@ -435,7 +420,6 @@ body.dark .toggle-mode-button:hover {
     transform: translateY(0);
 }
 
-/* Results Grid */
 .results-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -487,12 +471,12 @@ body.dark .toggle-mode-button:hover {
     right: -10%;
 }
 
-.card-summary { background: var(--card-gradient-3); grid-column: 1 / -1; } /* Summary utama mengambil seluruh lebar */
+.card-summary { background: var(--card-gradient-3); grid-column: 1 / -1; } 
 .card-input { background: var(--card-gradient-1); }
 .card-output { background: var(--card-gradient-1); }
 .card-utilization { background: var(--card-gradient-4); }
-.card-chart { background: var(--card-gradient-2); } /* Green for chart card */
-.card-table { background: var(--card-gradient-5); } /* Purple for table card */
+.card-chart { background: var(--card-gradient-2); }
+.card-table { background: var(--card-gradient-5); } 
 
 .card-title {
     margin: 0 0 20px 0;
@@ -531,7 +515,6 @@ body.dark .toggle-mode-button:hover {
     gap: 8px;
 }
 
-/* Status Indicators */
 .status-indicator {
     display: inline-block;
     width: 12px;
@@ -544,7 +527,6 @@ body.dark .toggle-mode-button:hover {
 .status-warning { background-color: var(--status-warning); }
 .status-critical { background-color: var(--status-critical); }
 
-/* Professional Notes */
 .note {
     background: var(--note-bg-light);
     border: 1px solid var(--note-border-light);
@@ -589,7 +571,7 @@ body.dark .toggle-mode-button:hover {
     transition: color 0.5s ease;
 }
 
-/* Footer */
+
 .footer {
     text-align: center;
     margin-top: 40px;
@@ -615,7 +597,6 @@ body.dark .toggle-mode-button:hover {
     margin-top: 5px;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     body {
         padding: 10px;
@@ -647,7 +628,6 @@ body.dark .toggle-mode-button:hover {
     }
 }
 
-/* Loading Animation */
 .loading {
     opacity: 0.7;
     pointer-events: none;
@@ -657,7 +637,6 @@ body.dark .toggle-mode-button:hover {
     background: #95a5a6 !important;
 }
 
-/* Smooth Animations */
 .fade-in {
     animation: fadeIn 0.5s ease-in;
 }
@@ -667,7 +646,6 @@ body.dark .toggle-mode-button:hover {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Error State */
 .error-message {
     background: #ff6b6b;
     color: white;
@@ -677,20 +655,19 @@ body.dark .toggle-mode-button:hover {
     text-align: center;
 }
 
-/* Chart Styling */
 .chart-container {
     position: relative;
-    height: 250px; /* Fixed height for consistency */
+    height: 250px;
     width: 100%;
-    margin-top: 15px; /* Space below title */
+    margin-top: 15px; 
 }
 
-/* Table Styling within card */
+
 .traffic-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
-    color: white; /* Text color for table content */
+    color: white; 
 }
 .traffic-table th, .traffic-table td {
     padding: 10px;

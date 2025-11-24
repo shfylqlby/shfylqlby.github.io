@@ -3,35 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="https://qcnetwork.net/logo.webp" type="image/webp" />  
   <title>Bandwidth Calculator QCNet</title>
-  
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Professional real-time network traffic analysis tool by QCNet.">
-  <meta name="keywords" content="bandwidth calculator, kalkulator bandwidth, network analysis, QCNet, traffic monitoring, network utilization, bandwidth monitoring">
-  <meta name="author" content="QCNet Developer Team">
-  <meta name="robots" content="index, follow">
 
-  <!-- Open Graph for social sharing -->
-  <meta property="og:title" content="Bandwidth Calculator QCNet">
-  <meta property="og:description" content="Professional real-time network traffic analysis tool by QCNet.">
-  <meta property="og:image" content="https://qcnetwork.net/logo.webp">
-  <meta property="og:url" content="https://qcnetwork.net/tools/bw-calculator">
+  <link rel="canonical" href="https://tools.shofiyulqalby.dev/tools/bw-calculator/">
+
+  <meta name="description" content="Bandwidth Calculator oleh QCNet. Analisis real-time input rate, output rate, port capacity, dan utilisasi jaringan. Dikembangkan oleh Muchamad Shofiyul Qalby.">
+
+  <meta name="keywords" content="Bandwidth Calculator, BW Calculator, Kalkulator Bandwidth, Network Monitoring, QCNet, PT Qalby Cahaya Network, Muchamad Shofiyul Qalby">
+
+  <meta property="og:title" content="Bandwidth Calculator QCNet - Real-time Network Analyzer">
+  <meta property="og:description" content="Alat analisis bandwidth profesional: input/output rate, utilisasi port, dan export laporan.">
+  <meta property="og:image" content="https://tools.shofiyulqalby.dev/og-bw.png">
+  <meta property="og:url" content="https://tools.shofiyulqalby.dev/tools/bw-calculator/">
   <meta property="og:type" content="website">
 
-  <!-- Favicon & Icons -->
-  <link rel="icon" href="https://qcnetwork.net/logo.webp" type="image/webp">
-  <link rel="apple-touch-icon" href="https://qcnetwork.net/logo.webp">
-  <link rel="shortcut icon" href="https://qcnetwork.net/logo.webp" type="image/webp">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Bandwidth Calculator QCNet",
+  "applicationCategory": "Network Monitoring",
+  "operatingSystem": "Any",
+  "url": "https://tools.shofiyulqalby.dev/tools/bw-calculator/",
+  "creator": {
+    "@type": "Person",
+    "name": "Muchamad Shofiyul Qalby"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PT Qalby Cahaya Network",
+    "logo": "https://tools.shofiyulqalby.dev/logo.webp"
+  }
+}
+</script>
 
-  <!-- Fonts & Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/qc.css">
 
-  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <!-- Watermark System -->
   <div class="watermark" aria-hidden="true"></div>
   <div class="watermark-elements watermark-corner" aria-hidden="true">
     <img src="https://qcnetwork.net/logo.webp" alt="QCNet Logo" style="height: 20px; margin-right: 8px;">
@@ -39,7 +51,6 @@
   </div>
 
   <main class="container">
-    <!-- Header Section -->
     <header class="header">
       <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
         <img src="https://qcnetwork.net/logo.webp" alt="QCNet Logo" style="height: 50px; width: 50px;">
@@ -48,18 +59,15 @@
           <p class="subtitle">Professional Network Traffic Analysis Tool | Powered by Qalby Cahaya Network</p>
         </div>
       </div>
-	  <!-- Back Button -->
       <a href="#" class="back-button" aria-label="Go Back" onclick="history.back(); return false;">
         <span class="sr-only">Go Back</span>
       </a>
-      <!-- Toggle Dark Mode Button -->
       <button type="button" class="toggle-mode-button" id="darkModeToggle" aria-label="Toggle Dark Mode" aria-pressed="false" data-darkmode="false">
         <span class="icon">🌙</span>
         <span class="sr-only">Toggle Dark Mode</span>
       </button>
     </header>
 
-    <!-- Input Section -->
     <section class="input-section" aria-labelledby="input-section-title">
       <h2 class="section-title" id="input-section-title">
         <span>📊</span>
@@ -109,12 +117,9 @@
       </button>
     </section>
 
-    <!-- Results Section -->
     <section id="results" class="results-grid" aria-live="polite">
-      <!-- Results will be dynamically rendered -->
     </section>
 
-    <!-- Professional Guidelines -->
     <aside class="note" aria-labelledby="guidelines-title">
       <h4 id="guidelines-title"><span>📋</span> Panduan Cepat Analisis Jaringan</h4>
       <ul>
@@ -134,7 +139,6 @@
       </ul>
     </aside>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="footer-brand">QCNet Bandwidth Calculator</div>
       <div>Network Analysis Tool | © 2025 QCNet Solutions</div>

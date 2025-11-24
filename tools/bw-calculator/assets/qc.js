@@ -1,10 +1,6 @@
-// assets/qc.js
-
-// Global variables
 let currentAnalysis = null;
-let bandwidthChartInstance = null; // To store the Chart.js instance
+let bandwidthChartInstance = null;
 
-// Utility Functions
 const Utils = {
     formatNumber: function(num, decimals = 2) {
         if (isNaN(num) || num === null || num === undefined) return '0';
@@ -32,37 +28,28 @@ const Utils = {
 
     parseLocaleNumber: function(stringNumber) {
         if (typeof stringNumber !== 'string') {
-            return parseFloat(stringNumber); // If it's already a number, just parse it
+            return parseFloat(stringNumber); 
         }
 
-        // Remove all thousand separators (both '.' and ',')
-        // This simplified logic assumes that if both are present, the last one is decimal.
-        // For example: "1.000,00" -> comma is decimal. "1,000.00" -> dot is decimal.
-        // If only one is present, it's treated as a thousand separator, then decimal.
         let cleanedString = stringNumber.replace(/[,.]/g, (match) => {
             const lastDotIndex = stringNumber.lastIndexOf('.');
             const lastCommaIndex = stringNumber.lastIndexOf(',');
 
-            // If comma is the last separator and dot is before it, comma is decimal. Remove dot.
             if (lastCommaIndex > lastDotIndex && match === '.') {
                 return '';
             }
-            // If dot is the last separator and comma is before it, dot is decimal. Remove comma.
             if (lastDotIndex > lastCommaIndex && match === ',') {
                 return '';
             }
-            // Otherwise, it's a thousand separator, so remove it.
             return '';
         });
 
-        // After removing thousand separators, if there's still a comma, it must be the decimal.
         cleanedString = cleanedString.replace(',', '.');
 
         return parseFloat(cleanedString);
     },
 
     convertRateToBps: function(value, unit) {
-        // Use parseLocaleNumber here
         const numValue = Utils.parseLocaleNumber(value);
         if (isNaN(numValue)) return 0;
 
@@ -105,7 +92,6 @@ const Utils = {
     }
 };
 
-// Traffic Analysis Calculator
 function TrafficAnalyzer(inputBps, outputBps, portCapacityGbps) {
     this.inputBps = parseFloat(inputBps) || 0;
     this.outputBps = parseFloat(outputBps) || 0;
@@ -116,7 +102,6 @@ function TrafficAnalyzer(inputBps, outputBps, portCapacityGbps) {
 }
 
 TrafficAnalyzer.prototype.calculate = function() {
-    // Convert to different units
     this.input = {
         bps: this.inputBps,
         kbps: this.inputBps / 1000,
@@ -138,13 +123,11 @@ TrafficAnalyzer.prototype.calculate = function() {
         kbps: (this.inputBps + this.outputBps) / 1000,
         mbps: (this.inputBps + this.outputBps) / 1000000,
         gbps: (this.inputBps + this.outputBps) / 1000000000,
-        // Calculate total utilization based on sum of input and output traffic
         utilization: ((this.inputBps + this.outputBps) / this.portCapacityBps) * 100
     };
 
     this.analysis = {
         pattern: Utils.getTrafficPattern(this.input.gbps, this.output.gbps),
-        // Available bandwidth is based on the peak utilization
         availableBandwidth: this.portCapacityGbps - Math.max(this.input.gbps, this.output.gbps),
         recommendation: Utils.getRecommendation(this.total.utilization),
         portType: `${this.portCapacityGbps}G Ethernet`
@@ -153,7 +136,7 @@ TrafficAnalyzer.prototype.calculate = function() {
 
 TrafficAnalyzer.prototype.generateReport = function() {
     return {
-        timestamp: new Date().toLocaleString('en-US'), // Use en-US for consistency in CSV
+        timestamp: new Date().toLocaleString('en-US'),
         input: this.input,
         output: this.output,
         total: this.total,
@@ -165,13 +148,11 @@ TrafficAnalyzer.prototype.generateReport = function() {
     };
 };
 
-// UI Controller
 const UIController = {
-    // Cache DOM elements for better performance
     elements: {
         container: document.querySelector('.container'),
         resultsDiv: document.getElementById('results'),
-        // Bandwidth Inputs
+
         inputRateValue: document.getElementById('inputRateValue'),
         inputRateUnit: document.getElementById('inputRateUnit'),
         outputRateValue: document.getElementById('outputRateValue'),
@@ -185,7 +166,7 @@ const UIController = {
     showLoading: function() {
         if (this.elements.container) {
             this.elements.container.classList.add('loading');
-            // Disable buttons during loading
+           
             this.elements.analyzeButton.disabled = true;
             this.elements.exportButton.disabled = true;
         }
@@ -194,7 +175,7 @@ const UIController = {
     hideLoading: function() {
         if (this.elements.container) {
             this.elements.container.classList.remove('loading');
-            // Re-enable buttons after loading
+           
             this.elements.analyzeButton.disabled = false;
             this.elements.exportButton.disabled = false;
         }
@@ -202,9 +183,9 @@ const UIController = {
 
     showError: function(message) {
         if (this.elements.resultsDiv) {
-            // Clear previous results and display error
+            
             this.elements.resultsDiv.innerHTML = `<div class="error-message">Error: ${message}</div>`;
-            // Ensure chart/table are not rendered or are hidden if an error occurs
+            
             if (bandwidthChartInstance) {
                 bandwidthChartInstance.destroy();
                 bandwidthChartInstance = null;
@@ -407,7 +388,7 @@ const UIController = {
 
         if (this.elements.resultsDiv) {
             this.elements.resultsDiv.innerHTML = resultsHTML;
-            // Ensure chart is rendered after its canvas element is in DOM
+            
             this.renderBandwidthChart(analyzer.input.gbps, analyzer.output.gbps);
         }
     },
@@ -415,11 +396,11 @@ const UIController = {
     renderBandwidthChart: function(inputGbps, outputGbps) {
         const ctx = document.getElementById('bandwidthChart').getContext('2d');
         if (bandwidthChartInstance) {
-            bandwidthChartInstance.destroy(); // Destroy previous chart instance
+            bandwidthChartInstance.destroy(); 
         }
 
         const bodyStyles = getComputedStyle(document.body);
-        const isDarkMode = bodyStyles.getPropertyValue('background-color') === 'rgb(18, 18, 18)'; // Check if dark mode background is active
+        const isDarkMode = bodyStyles.getPropertyValue('background-color') === 'rgb(18, 18, 18)'; 
 
         const textColor = isDarkMode ? 'var(--chart-text-color-dark)' : 'var(--chart-text-color-light)';
         const gridColor = isDarkMode ? 'var(--chart-grid-color-dark)' : 'var(--chart-grid-color-light)';
@@ -447,7 +428,7 @@ const UIController = {
                         display: false
                     },
                     title: {
-                        display: false, /* Title is now in card-title */
+                        display: false, 
                     }
                 },
                 scales: {
@@ -510,7 +491,7 @@ const UIController = {
 
 
 
-    // Auto dark mode detection on load
+   
     
     
     initDarkMode: function () {
@@ -535,30 +516,29 @@ const UIController = {
 
 };
 
-// Fungsi bantu: validasi angka positif tanpa huruf
 function isValidPositiveNumber(value) {
     return /^[0-9]+(\.[0-9]+)?$/.test(value.trim()) && parseFloat(value) > 0;
 }
 
-// Main Functions
+
 function calculateRealtime() {
     console.log('calculateRealtime() called');
     UIController.showLoading();
 
     try {
-        // Ambil nilai dari form
+        
         const inputRateValue = UIController.elements.inputRateValue.value.trim();
         const outputRateValue = UIController.elements.outputRateValue.value.trim();
         const portCapacityValue = UIController.elements.portCapacity.value.trim();
 
-        // Validasi: Tidak boleh kosong
+       
         if (!inputRateValue || !outputRateValue || !portCapacityValue) {
             alert('⚠️ Silakan isi semua kolom bandwidth terlebih dahulu.');
             UIController.hideLoading();
             return;
         }
 
-        // Validasi: Semua harus angka positif tanpa huruf
+       
         if (
             !isValidPositiveNumber(inputRateValue) ||
             !isValidPositiveNumber(outputRateValue) ||
@@ -569,20 +549,20 @@ function calculateRealtime() {
             return;
         }
 
-        // Konversi ke float
+       
         const inputRate = parseFloat(inputRateValue);
         const outputRate = parseFloat(outputRateValue);
         const portCapacity = parseFloat(portCapacityValue);
 
-        // Ambil unit
+        
         const inputRateUnit = UIController.elements.inputRateUnit.value;
         const outputRateUnit = UIController.elements.outputRateUnit.value;
 
-        // Konversi ke bps
+       
         const inputBps = Utils.convertRateToBps(inputRate, inputRateUnit);
         const outputBps = Utils.convertRateToBps(outputRate, outputRateUnit);
 
-        // Proses analisis
+        
         const analyzer = new TrafficAnalyzer(inputBps, outputBps, portCapacity);
         currentAnalysis = analyzer;
 
@@ -600,7 +580,7 @@ function calculateRealtime() {
 
 
 
-//export to excel
+
 function exportToCSV() {
     if (!currentAnalysis) {
         alert('Tidak ada data analisis yang dapat diekspor. Jalankan analisis terlebih dahulu.');
@@ -629,11 +609,11 @@ function exportToCSV() {
     ];
 
     headers.forEach(row => {
-        csvContent += row.join(",") + "\n"; // FIXED HERE
+        csvContent += row.join(",") + "\n";
     });
 
     rows.forEach(row => {
-        csvContent += row.join(",") + "\n"; // FIXED HERE
+        csvContent += row.join(",") + "\n"; 
     });
 
     const encodedUri = encodeURI(csvContent);
@@ -647,9 +627,9 @@ function exportToCSV() {
 
 
 
-// Event Listeners (better than inline onclick)
+
 document.addEventListener('DOMContentLoaded', () => {
-    UIController.initDarkMode(); // Initialize dark mode on load
+    UIController.initDarkMode(); 
     UIController.elements.analyzeButton.addEventListener('click', calculateRealtime);
     UIController.elements.exportButton.addEventListener('click', exportToCSV);
     UIController.elements.darkModeToggle.addEventListener('click', UIController.toggleDarkMode);
